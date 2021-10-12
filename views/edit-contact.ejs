@@ -1,0 +1,36 @@
+<div class="container mt-3">
+    <div class="row">
+        <div class="col-md-6">
+            <h2>Form Ubah Data Contact</h2>
+            <% if (typeof errors != 'undefined'){ %>
+                <div class="alert alert-danger" role="alert">
+                    <ul>
+                        <% errors.forEach(error => { %>
+                         <li><%= error.msg%> </li>
+                        <% }) %>
+                    </ul>
+
+                  </div>
+                <% } %>  
+            <form method="POST" action="/contact?_method=PUT">
+              <input type="hidden" name="_id" value="<%= contact._id %>" > 
+              <input type="hidden" name="oldnama" value="<%= (contact.oldnama) ? contact.oldnama: contact.nama; %>">
+                <div class="mb-3">
+                  <label for="nama" class="form-label">Nama</label>
+                  <input type="text" class="form-control" id="nama" name="nama" aria-describedby="namaHelp" value="<%= contact.nama %>" required>
+                  <div id="namaHelp" class="form-text">Nama Kontak.</div>
+                </div>
+                <div class="mb-3">
+                    <label for="nohp" class="form-label">No HP</label>
+                    <input type="text" class="form-control" id="nohp" name="nohp" aria-describedby="nohpHelp" value="<%= contact.nohp %>" required>
+                    <div id="nohpHelp" class="form-text">No Hp Kontak.</div>
+                  </div><div class="mb-3">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp" value="<%= contact.email %>" >
+                    <div id="emailHelp" class="form-text">Email Kontak.</div>
+                  </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+              </form>
+        </div>
+    </div>
+</div>
